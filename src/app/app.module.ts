@@ -11,13 +11,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { TabComponent } from './tab/tab.component';
 import { StoreModule } from '@ngrx/store';
 
+import * as formApp from "./store/app.reducer";
+
 @NgModule({
   declarations: [
     AppComponent,
     TabComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, StoreModule.forRoot({}, {})],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    StoreModule.forRoot(formApp.appReducer)
+],
   providers: [
     StatusBar,
     SplashScreen,
