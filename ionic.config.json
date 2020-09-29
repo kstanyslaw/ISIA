@@ -1,0 +1,7 @@
+{
+  "name": "ISIA",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
