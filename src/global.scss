@@ -27,7 +27,9 @@
 
 .dark {
   ion-toolbar,
-  ion-title {
-    background-color: #1a1a1a;
+  ion-title,
+  .toolbar-background,
+  .toolbar-container {
+    background-color: #1a1a1a !important;
   }
 }
