@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-theme',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./theme.component.scss'],
 })
 export class ThemeComponent implements OnInit {
+
+  @Input() settingsForm: FormGroup;
 
   isDark: boolean;
 

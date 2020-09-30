@@ -1,6 +1,6 @@
-<ion-item>
-  <ion-label>App Language</ion-label>
-    <ion-select value="ru" interface="action-sheet">
+<ion-item [formGroup]="settingsForm">
+  <ion-label for="appLanguage">App Language</ion-label>
+    <ion-select interface="action-sheet" [formControlName]="'appLanguage'">
       <ion-select-option value="ru">
         <ion-icon src="../../../assets/icon/language/002-russia.svg"></ion-icon>
         Russian
@@ -8,7 +8,7 @@
       <ion-select-option value="en">
         <ion-icon src="../../../assets/icon/language/003-united-states.svg"></ion-icon>
         English
-      </ion-select-option>
+      </ion-select-option> 
       <ion-select-option value="de">
         <ion-icon src="../../../assets/icon/language/001-germany.svg"></ion-icon>
         German

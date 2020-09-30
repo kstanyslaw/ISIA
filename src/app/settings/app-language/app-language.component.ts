@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-app-language',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-language.component.scss'],
 })
 export class AppLanguageComponent implements OnInit {
+
+  @Input() settingsForm: FormGroup;
 
   constructor() { }
 
