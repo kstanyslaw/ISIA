@@ -8,10 +8,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class AppLanguageComponent implements OnInit {
 
+  icons = {
+    'ru': "../../../assets/icon/language/002-russia.svg",
+    'en': "../../../assets/icon/language/003-united-states.svg",
+    'de': "../../../assets/icon/language/001-germany.svg"
+  }
+
   @Input() settingsForm: FormGroup;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {  }
 
 }
