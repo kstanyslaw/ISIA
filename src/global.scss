@@ -26,10 +26,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .dark {
-  ion-toolbar,
-  ion-title,
-  .toolbar-background,
-  .toolbar-container {
-    background-color: #1a1a1a !important;
+  ion-toolbar {
+    --background: #1a1a1a;
   }
 }
