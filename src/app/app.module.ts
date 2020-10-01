@@ -26,7 +26,7 @@ import { environment } from 'src/environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     StoreModule.forRoot(formApp.appReducer),
-    StoreDevtoolsModule.instrument({logOnly: environment.production})
+    StoreDevtoolsModule.instrument({logOnly: environment.production}),
 ],
   providers: [
     StatusBar,
