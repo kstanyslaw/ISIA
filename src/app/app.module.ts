@@ -10,8 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TabComponent } from './tab/tab.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 import * as formApp from "./store/app.reducer";
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import * as formApp from "./store/app.reducer";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    StoreModule.forRoot(formApp.appReducer)
+    StoreModule.forRoot(formApp.appReducer),
+    StoreDevtoolsModule.instrument({logOnly: environment.production})
 ],
   providers: [
     StatusBar,
