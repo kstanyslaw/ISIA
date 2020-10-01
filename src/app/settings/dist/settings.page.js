@@ -29,12 +29,14 @@ var SettingsPage = /** @class */ (function () {
     SettingsPage.prototype.initForm = function () {
         this.settingsForm = new forms_1.FormGroup({
             theme: new forms_1.FormControl(this.loadedSettings.theme),
-            appLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage)
+            appLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage),
+            multilanguage: new forms_1.FormControl(false),
+            translateLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US')
         });
     };
     SettingsPage.prototype.updateSettings = function (newValue) {
         if (newValue === void 0) { newValue = this.loadedSettings; }
-        var newSettings = new settings_model_1.Settings(newValue.theme, newValue.appLanguage);
+        var newSettings = new settings_model_1.Settings(newValue.theme, newValue.appLanguage, newValue.multilanguage, newValue.translateLanguage);
         this.store.dispatch(SettingsActions.updateSettings({ newSettings: newSettings }));
     };
     SettingsPage.prototype.ngOnDestroy = function () {

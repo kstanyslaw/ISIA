@@ -37,14 +37,18 @@ export class SettingsPage implements OnInit, OnDestroy {
   initForm(): void {
     this.settingsForm = new FormGroup({
       theme: new FormControl(this.loadedSettings.theme),
-      appLanguage: new FormControl(this.loadedSettings.appLanguage)
+      appLanguage: new FormControl(this.loadedSettings.appLanguage),
+      multilanguage: new FormControl(false),
+      translateLanguage: new FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US')
     });
   }
 
   updateSettings(newValue = this.loadedSettings) {
     const newSettings = new Settings(
       newValue.theme,
-      newValue.appLanguage
+      newValue.appLanguage,
+      newValue.multilanguage,
+      newValue.translateLanguage
     );
     this.store.dispatch(SettingsActions.updateSettings({newSettings}));
   }
