@@ -6,7 +6,9 @@
 
 <ion-content>
   <form [formGroup]="settingsForm">
-    <app-theme [settingsForm]="settingsForm"></app-theme>
-    <app-app-language [settingsForm]="settingsForm"></app-app-language>
+    <ion-list>
+      <app-theme [settingsForm]="settingsForm"></app-theme>
+      <app-app-language [settingsForm]="settingsForm"></app-app-language>
+    </ion-list>
   </form>
 </ion-content>

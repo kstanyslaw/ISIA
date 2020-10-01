@@ -17,8 +17,6 @@ export class ThemeComponent implements OnInit {
   ngOnInit() {}
 
   update() {
-    document.body.classList.toggle('dark', this.isDark);    
+    document.body.classList.toggle('dark', this.settingsForm.value.theme);
   }
-
-
 }

@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as fromRoot from "../store/app.reducer";
+import * as SettingsActions from "./store/settings.actions";
 import { Subscription } from 'rxjs';
+import { Settings } from './settings.model';
 
 @Component({
   selector: 'app-settings',
@@ -11,20 +15,42 @@ export class SettingsPage implements OnInit, OnDestroy {
 
   settingsForm: FormGroup;
   private formChangeSub: Subscription;
+  private storeSub: Subscription;
+  private loadedSettings: Settings;
 
-  constructor() {
+  constructor(private store: Store<fromRoot.AppState>) {
   }
 
   ngOnInit(): void {
-    this.settingsForm = new FormGroup({
-      theme: new FormControl(null),
-      appLanguage: new FormControl('ru')
+    this.storeSub = this.store.select('settings').subscribe(stateData => {
+      this.loadedSettings = stateData.settings;
     });
 
-    this.formChangeSub = this.settingsForm.valueChanges.subscribe(newValue => console.log(newValue));
+    this.initForm();
+
+    this.formChangeSub = this.settingsForm.valueChanges.subscribe(newValue => {
+      console.log(newValue);
+      this.updateSettings(newValue);
+    });
+  }
+
+  initForm(): void {
+    this.settingsForm = new FormGroup({
+      theme: new FormControl(this.loadedSettings.theme),
+      appLanguage: new FormControl(this.loadedSettings.appLanguage)
+    });
+  }
+
+  updateSettings(newValue = this.loadedSettings) {
+    const newSettings = new Settings(
+      newValue.theme,
+      newValue.appLanguage
+    );
+    this.store.dispatch(SettingsActions.updateSettings({newSettings}));
   }
 
   ngOnDestroy(): void {
     this.formChangeSub.unsubscribe();
+    this.storeSub.unsubscribe();
   }
 }

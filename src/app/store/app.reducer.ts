@@ -1,10 +1,10 @@
 import { ActionReducerMap } from "@ngrx/store";
-import * as formSettings from "../settings/store/settings.reducer";
+import * as fromSettings from "../settings/store/settings.reducer";
 
 export interface AppState {
-  settings: formSettings.State
+  settings: fromSettings.State
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
-  settings: formSettings.reducer
+  settings: fromSettings.reducer
 }
