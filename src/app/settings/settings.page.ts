@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromRoot from "../store/app.reducer";
 import * as SettingsActions from "./store/settings.actions";
@@ -29,7 +29,6 @@ export class SettingsPage implements OnInit, OnDestroy {
     this.initForm();
 
     this.formChangeSub = this.settingsForm.valueChanges.subscribe(newValue => {
-      console.log(newValue);
       this.updateSettings(newValue);
     });
   }
@@ -39,8 +38,21 @@ export class SettingsPage implements OnInit, OnDestroy {
       theme: new FormControl(this.loadedSettings.theme),
       appLanguage: new FormControl(this.loadedSettings.appLanguage),
       multilanguage: new FormControl(false),
-      translateLanguage: new FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US')
+      translateLanguage: new FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US'),
+      sports: new FormArray([])
     });
+
+    if (this.loadedSettings.sports !== undefined) {
+      this.setSportsPreset(this.loadedSettings.sports);
+    }
+  }
+
+  get sports(): FormArray {
+    return this.settingsForm.get('sports') as FormArray;
+  }
+
+  setSportsPreset(sportsPresets: [{sport: string, level: string}]) {
+    this.sports.patchValue([...sportsPresets]);
   }
 
   updateSettings(newValue = this.loadedSettings) {
@@ -48,7 +60,8 @@ export class SettingsPage implements OnInit, OnDestroy {
       newValue.theme,
       newValue.appLanguage,
       newValue.multilanguage,
-      newValue.translateLanguage
+      newValue.translateLanguage,
+      newValue.sports
     );
     this.store.dispatch(SettingsActions.updateSettings({newSettings}));
   }

@@ -6,10 +6,13 @@
     </ion-label>
   </ion-list-header>
   
-  <ion-item [formGroup]="settingsForm">
+  <ion-item [formGroup]="settingsForm" lines="none">
     <ion-label>Theme</ion-label>
     <ion-icon name="sunny" [color]="isDark ? 'dark' : 'primary'"></ion-icon>
     <ion-toggle color="light" (ionChange)="update()" class="ion-margin-horizontal" [formControlName]="'theme'"></ion-toggle>
     <ion-icon name="moon" [color]="isDark ? 'dark' : 'primary'"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="full">
   </ion-item>
 </ion-list>

@@ -9,6 +9,8 @@ import { SettingsPageRoutingModule } from './settings-routing.module';
 import { SettingsPage } from './settings.page';
 import { ThemeComponent } from './theme/theme.component';
 import { AppLanguageComponent } from './app-language/app-language.component';
+import { SportsComponent } from './sports/sports.component';
+import { SportFormGroupComponent } from './sports/sport-form-group/sport-form-group.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ import { AppLanguageComponent } from './app-language/app-language.component';
   declarations: [
     SettingsPage,
     ThemeComponent,
-    AppLanguageComponent
+    AppLanguageComponent,
+    SportsComponent,
+    SportFormGroupComponent
   ]
 })
 export class SettingsPageModule {}

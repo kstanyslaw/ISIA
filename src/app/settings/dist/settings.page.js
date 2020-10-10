@@ -5,6 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 exports.__esModule = true;
 exports.SettingsPage = void 0;
 var core_1 = require("@angular/core");
@@ -22,7 +29,6 @@ var SettingsPage = /** @class */ (function () {
         });
         this.initForm();
         this.formChangeSub = this.settingsForm.valueChanges.subscribe(function (newValue) {
-            console.log(newValue);
             _this.updateSettings(newValue);
         });
     };
@@ -31,12 +37,26 @@ var SettingsPage = /** @class */ (function () {
             theme: new forms_1.FormControl(this.loadedSettings.theme),
             appLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage),
             multilanguage: new forms_1.FormControl(false),
-            translateLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US')
+            translateLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US'),
+            sports: new forms_1.FormArray([])
         });
+        if (this.loadedSettings.sports !== undefined) {
+            this.setSportsPreset(this.loadedSettings.sports);
+        }
+    };
+    Object.defineProperty(SettingsPage.prototype, "sports", {
+        get: function () {
+            return this.settingsForm.get('sports');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    SettingsPage.prototype.setSportsPreset = function (sportsPresets) {
+        this.sports.patchValue(__spreadArrays(sportsPresets));
     };
     SettingsPage.prototype.updateSettings = function (newValue) {
         if (newValue === void 0) { newValue = this.loadedSettings; }
-        var newSettings = new settings_model_1.Settings(newValue.theme, newValue.appLanguage, newValue.multilanguage, newValue.translateLanguage);
+        var newSettings = new settings_model_1.Settings(newValue.theme, newValue.appLanguage, newValue.multilanguage, newValue.translateLanguage, newValue.sports);
         this.store.dispatch(SettingsActions.updateSettings({ newSettings: newSettings }));
     };
     SettingsPage.prototype.ngOnDestroy = function () {
