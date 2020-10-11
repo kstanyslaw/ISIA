@@ -52,7 +52,13 @@ export class SettingsPage implements OnInit, OnDestroy {
   }
 
   setSportsPreset(sportsPresets: [{sport: string, level: string}]) {
-    this.sports.patchValue([...sportsPresets]);
+    sportsPresets.forEach(presetItem => {
+      const newFormGroup = new FormGroup({
+        sport: new FormControl(presetItem.sport),
+        level: new FormControl(presetItem.level)
+      });
+      this.sports.push(newFormGroup);
+    });
   }
 
   updateSettings(newValue = this.loadedSettings) {

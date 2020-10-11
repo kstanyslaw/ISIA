@@ -13,7 +13,6 @@ var SportsComponent = /** @class */ (function () {
     function SportsComponent() {
     }
     SportsComponent.prototype.ngOnInit = function () {
-        // this.sportsArray = this.settingsForm.get('sports') as FormArray;
         console.log(this.sportsArray);
     };
     Object.defineProperty(SportsComponent.prototype, "sportsArray", {

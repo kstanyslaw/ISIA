@@ -12,7 +12,6 @@ export class SportsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.sportsArray = this.settingsForm.get('sports') as FormArray;
     console.log(this.sportsArray);
   }
 

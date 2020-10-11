@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Store } from '@ngrx/store';
 import * as fromRoot from "./store/app.reducer";
 import * as SettingsActions from "./settings/store/settings.actions";
-import { Settings } from './settings/settings.model';
+import { Settings, SportItem } from './settings/settings.model';
 
 @Component({
   selector: 'app-root',
@@ -58,5 +58,4 @@ export class AppComponent {
     const newLanguage: string = this.locale;
     this.store.dispatch(SettingsActions.setAppLanguage({ newLanguage }));
   }
-
 }

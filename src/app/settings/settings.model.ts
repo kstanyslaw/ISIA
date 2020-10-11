@@ -10,3 +10,8 @@ export class Settings {
     }]
   ) { }
 }
+
+export interface SportItem {
+  sport: string;
+  level: string;
+}
