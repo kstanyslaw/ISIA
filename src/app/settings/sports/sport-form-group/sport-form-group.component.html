@@ -1,0 +1,22 @@
+<ion-grid [formGroup]="sportFormGroup">
+  <ion-row>
+
+    <ion-col size-sm="6">
+      <ion-label>Sport</ion-label>
+      <ion-select interface="action-sheet" [formControlName]="'sport'">
+        <ion-select-option value="ski">Ski</ion-select-option>
+        <ion-select-option value="snowboard">Snowboard</ion-select-option>
+      </ion-select>
+    </ion-col>
+
+    <ion-col size-sm="6">
+      <ion-label>Level</ion-label>
+      <ion-select interface="action-sheet" [formControlName]="'level'">
+        <ion-select-option value="A">A</ion-select-option>
+        <ion-select-option value="B">B</ion-select-option>
+        <ion-select-option value="C">C</ion-select-option>
+      </ion-select>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

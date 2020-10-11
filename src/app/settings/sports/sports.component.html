@@ -1,0 +1,19 @@
+<ion-list class="ion-align-items-aselie" [formGroup]="settingsForm">
+  <ion-list-header>
+    <ion-label>
+      <ion-icon name="barbell"></ion-icon>
+      Sports
+    </ion-label>
+  </ion-list-header>
+
+  <div formArrayName="sportsArray" *ngIf="sportsArray.controls && sportsArray.length > 0">
+    <ion-item *ngFor="let sport of sportsArray.controls; index as i">
+      <app-sport-form-group [sportFormGroup]="sport"></app-sport-form-group>
+    </ion-item>
+  </div>
+  
+</ion-list>
+<ion-button (click)="onAddSport()" fill="clear" color="primary">
+  <ion-icon slot="start" name="add"></ion-icon>
+  Add Sport
+</ion-button>

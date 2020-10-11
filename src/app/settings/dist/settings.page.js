@@ -22,7 +22,6 @@ var SettingsPage = /** @class */ (function () {
         });
         this.initForm();
         this.formChangeSub = this.settingsForm.valueChanges.subscribe(function (newValue) {
-            console.log(newValue);
             _this.updateSettings(newValue);
         });
     };
@@ -31,12 +30,33 @@ var SettingsPage = /** @class */ (function () {
             theme: new forms_1.FormControl(this.loadedSettings.theme),
             appLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage),
             multilanguage: new forms_1.FormControl(false),
-            translateLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US')
+            translateLanguage: new forms_1.FormControl(this.loadedSettings.appLanguage === 'en-US' ? 'ru' : 'en-US'),
+            sports: new forms_1.FormArray([])
+        });
+        if (this.loadedSettings.sports !== undefined) {
+            this.setSportsPreset(this.loadedSettings.sports);
+        }
+    };
+    Object.defineProperty(SettingsPage.prototype, "sports", {
+        get: function () {
+            return this.settingsForm.get('sports');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    SettingsPage.prototype.setSportsPreset = function (sportsPresets) {
+        var _this = this;
+        sportsPresets.forEach(function (presetItem) {
+            var newFormGroup = new forms_1.FormGroup({
+                sport: new forms_1.FormControl(presetItem.sport),
+                level: new forms_1.FormControl(presetItem.level)
+            });
+            _this.sports.push(newFormGroup);
         });
     };
     SettingsPage.prototype.updateSettings = function (newValue) {
         if (newValue === void 0) { newValue = this.loadedSettings; }
-        var newSettings = new settings_model_1.Settings(newValue.theme, newValue.appLanguage, newValue.multilanguage, newValue.translateLanguage);
+        var newSettings = new settings_model_1.Settings(newValue.theme, newValue.appLanguage, newValue.multilanguage, newValue.translateLanguage, newValue.sports);
         this.store.dispatch(SettingsActions.updateSettings({ newSettings: newSettings }));
     };
     SettingsPage.prototype.ngOnDestroy = function () {

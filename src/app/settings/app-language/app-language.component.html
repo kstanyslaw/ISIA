@@ -32,7 +32,7 @@
     <ion-checkbox slot="start" [formControlName]="'multilanguage'"></ion-checkbox>
   </ion-item>
 
-  <ion-item [disabled]="!multilanguage">
+  <ion-item [disabled]="!multilanguage" lines="none">
     <ion-label for="firstLang">
       Translate Language
       <!-- <ion-icon slot="end" [src]="icons[settingsForm.value.appLanguage]"></ion-icon> -->
@@ -48,6 +48,9 @@
           Deutsch
         </ion-select-option>
       </ion-select>
+  </ion-item>
+
+  <ion-item lines="full">
   </ion-item>
 
 </ion-list>

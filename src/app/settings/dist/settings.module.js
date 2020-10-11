@@ -15,6 +15,8 @@ var settings_routing_module_1 = require("./settings-routing.module");
 var settings_page_1 = require("./settings.page");
 var theme_component_1 = require("./theme/theme.component");
 var app_language_component_1 = require("./app-language/app-language.component");
+var sports_component_1 = require("./sports/sports.component");
+var sport_form_group_component_1 = require("./sports/sport-form-group/sport-form-group.component");
 var SettingsPageModule = /** @class */ (function () {
     function SettingsPageModule() {
     }
@@ -30,7 +32,9 @@ var SettingsPageModule = /** @class */ (function () {
             declarations: [
                 settings_page_1.SettingsPage,
                 theme_component_1.ThemeComponent,
-                app_language_component_1.AppLanguageComponent
+                app_language_component_1.AppLanguageComponent,
+                sports_component_1.SportsComponent,
+                sport_form_group_component_1.SportFormGroupComponent
             ]
         })
     ], SettingsPageModule);

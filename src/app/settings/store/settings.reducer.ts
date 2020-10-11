@@ -23,7 +23,11 @@ const settingsReducer = createReducer(
   on(SettingsActions.setTheme, (state, { newTheme }) => ({
     ...state,
     settings: {...state.settings, theme: newTheme}
-  }))
+  })),
+  on(SettingsActions.setSports, (state, { newSports }) => ({
+    ...state,
+    settings: {...state.settings, sports: newSports}
+  })),
 );
 
 export function reducer(state: State | undefined, action: Action) {
