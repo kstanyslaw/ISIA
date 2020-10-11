@@ -1,0 +1,58 @@
+
+<ion-list  [formGroup]="settingsForm">
+  <ion-list-header>
+    <ion-label>
+      <ion-icon name="language"></ion-icon>
+      Localization
+    </ion-label>
+  </ion-list-header>
+  
+  <ion-item lines="none">
+    <ion-label for="appLanguage">
+      App Language
+      <!-- <ion-icon slot="end" [src]="icons[settingsForm.value.appLanguage]"></ion-icon> -->
+    </ion-label>
+      <ion-select interface="action-sheet" [formControlName]="'appLanguage'">
+        <ion-select-option value="ru">
+          Русский
+        </ion-select-option>
+        <ion-select-option value="en-US">
+          English
+        </ion-select-option> 
+        <ion-select-option value="de">
+          Deutsch
+        </ion-select-option>
+      </ion-select>
+  </ion-item>
+
+  <!-- SET MULTILANG -->
+
+  <ion-item lines="none">
+    <ion-label>Enable Multilanguage</ion-label>
+    <ion-checkbox slot="start" [formControlName]="'multilanguage'"></ion-checkbox>
+  </ion-item>
+
+  <ion-item [disabled]="!multilanguage" lines="none">
+    <ion-label for="firstLang">
+      Translate Language
+      <!-- <ion-icon slot="end" [src]="icons[settingsForm.value.appLanguage]"></ion-icon> -->
+    </ion-label>
+      <ion-select interface="action-sheet" [formControlName]="'translateLanguage'">
+        <ion-select-option value="ru">
+          Русский
+        </ion-select-option>
+        <ion-select-option value="en-US">
+          English
+        </ion-select-option> 
+        <ion-select-option value="de">
+          Deutsch
+        </ion-select-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-item lines="full">
+  </ion-item>
+
+</ion-list>
+
+<!-- <div>Icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div> -->
