@@ -28,3 +28,16 @@
 .dark .sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
   --color: #ffffff !important;
 }
+
+ion-list-header.md {
+  font-size: larger;
+  font-weight: bold;
+}
+
+ion-label {
+  display: flex;
+  align-items: center;
+}
+ion-label ion-icon {
+  margin-right: 0.3rem;
+}
