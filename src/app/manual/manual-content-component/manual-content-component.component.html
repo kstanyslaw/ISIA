@@ -1,0 +1,7 @@
+<!-- <div *ngIf="!content && content['en'].length >= 0">
+</div> -->
+<p *ngFor="let item of content; let i=index" [routerLink]="['/', 'manual', item]">
+  <ion-icon name="chevron-forward-circle-sharp" slot="start" color="primary"></ion-icon>
+  {{ i+1 }}
+  {{ item }}
+</p>
